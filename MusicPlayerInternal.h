@@ -23,7 +23,7 @@ Songs* newSongsNode(SongName _song_name, Songs* next);
 * Gets song list file and reads song written on each row by its own and returns it through songName
 * Return value: 1 for succsess -1 for end of file or failure
 */
-int32_t getNextSong(FILE* songList, char* songName);
+int32_t getNextSongFromFile(FILE* songList, char* songName);
 
 /**
 * Gets Songs list and returns size of list
@@ -47,6 +47,11 @@ uint32_t playSong(Songs* song);
 void stopSong();
 
 /**
+* Stops song playing weather there is a song playing or not and quit program
+*/
+void stopSongAndQuit();
+
+/**
 * Returns next song in the list or NULL if song is the last song
 */
 Songs* nextSong(Songs* song);
@@ -59,9 +64,14 @@ Songs* nextSong(Songs* song);
 Songs* prevSong(Songs* first_song, Songs* current_song);
 
 /**
-* returns song name
+* Returns song name
 */
 char* get_song_name(Songs* song);
+
+/**
+* Prints song list
+*/
+void print_songs_list(Songs* lst);
 
 #endif //! MUSIC_PLAYER_INTERNAL_H
 

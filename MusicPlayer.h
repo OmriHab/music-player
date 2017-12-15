@@ -57,9 +57,15 @@ uint32_t orderSongListByABC(SongList* lst);
 void freeSongList(SongList* lst);
 
 /**
-* Gets song list and starts Playing
+* Gets song list and starts playing
 */
 uint32_t startPlaying(SongList* lst);
+
+/**
+* Gets song list and prints it out
+*/
+void printSongList(SongList* lst);
+
 
 #endif //! MUSIC_PLAYER_H
 

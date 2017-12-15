@@ -2,6 +2,7 @@
 #include "MusicPlayerInternal.h"
 #include "defines.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 struct _SongList {
 	Songs* start_songs;		// Start of list of songs
@@ -12,9 +13,11 @@ struct _SongList {
 
 SongList* newSongList(char* song_list_file_name){
 	SongList* new_song_list = (SongList*)malloc(sizeof(SongList));
-	ASSERT_NULL(new_song_list == NULL);
+	ASSERT_NULL(new_song_list != NULL);
+	
+	// Load songs into song list
 	new_song_list->start_songs = newSongs(song_list_file_name);
-	ASSERT_NULL(new_song_list->start_songs == NULL);
+	ASSERT_NULL(new_song_list->start_songs != NULL);
 	
 	new_song_list->current_song = new_song_list->start_songs;
 	new_song_list->size = songsGetSize(new_song_list->start_songs);
@@ -53,7 +56,10 @@ void freeSongList(SongList* lst){
 uint32_t startPlaying(SongList* lst){
 	// Stop song playing if there is, and play the first song
 	stopSong();
-	printf("AA\n");
 	get_song_name(lst->current_song);
 	return playSong(lst->current_song);
+}
+
+void printSongList(SongList* lst){
+	print_songs_list(lst->start_songs);
 }
